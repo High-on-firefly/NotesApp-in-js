@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+
+    min-height: 100vh;
+}
+
+.box{
+    background-color: #444;
+    border: 2px solid #666;
+
+    border-radius: 12px;
+    width: 500px;
+    height: 500px;
+}
+.spiral-svg {
+    width: 420px;
+    height: 420px;
+    overflow: visible;
+    transform: skewX(-12deg);
+    transform-origin: center;
+}
+
+.spiral-path {
+    fill: none;
+    stroke: white;
+    stroke-width: 28;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: 
+        stroke-dashoffset 1.5s cubic-bezier(.77, 0, .18, 1),
+        stroke-width 1.5s cubic-bezier(.77, 0, .18, 1);
+}
