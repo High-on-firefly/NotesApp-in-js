@@ -1,13 +1,13 @@
 window.addEventListener("load", () => {
-    const spiralPath = document.querySelector(".spiral-path");
+    const svgPath = document.querySelector(".svg-path");
 
-    const pathLength = spiralPath.getTotalLength();
+    const pathLength = svgPath.getTotalLength();
 
-    spiralPath.style.strokeDasharray = pathLength;
-    spiralPath.style.strokeDashoffset = 0;
+    svgPath.style.strokeDasharray = pathLength;
+    svgPath.style.strokeDashoffset = 0;
 
     requestAnimationFrame(() => {
-        spiralPath.style.strokeDashoffset = pathLength;
-        spiralPath.style.strokeWidth = 6;
+        svgPath.style.strokeDashoffset = -pathLength;
+        svgPath.style.strokeWidth = 10;
     });
 });
