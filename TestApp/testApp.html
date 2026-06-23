@@ -6,56 +6,33 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="background.css">
         <link rel="stylesheet" href="testApp.css">
         <title>TEST</title>
     </head>
     <body>
-        <div class="box">
-            <svg 
-                class="svg"
-                viewBox="0 0 101 101" 
-            >
-                <defs>
-                    <mask
-                        id="path-mask"
-                        width = "101"
-                        height = "101"
-                    >
-                        <path d=
-                                "M0.500114 14.6538C17.4879 6.45282 26.5001 
-                                0.653838 41.0001 0.653838C55.5001 0.653838 
-                                9.50011 30.1538 4.50011 51.1538C-0.499887 
-                                72.1538 80.0001 -3.34616 90.0001 0.653838C100 
-                                4.65384 6.00011 68.1538 4.50011 85.6538C3.00011 
-                                103.154 105.5 -7.34616 114 5.15384C122.5 17.6538 
-                                17.0001 100.654 24.5001 109.654C32.0001 118.654 110 
-                                33.6539 116.5 43.6538C123 53.6538 60.5001 100.654 
-                                66.5001 109.654C72.5001 118.654 111.5 59.1539 116.5 
-                                71.1538C121.5 83.1538 81.5001 102.654 88.5001 109.
-                                654C95.5001 116.654 116.5 85.6538 119.5 92.1538" 
-                                class="svg-path"
-                            />
-                    </mask>
-                </defs>
-                <rect
-                    class="svg-fill"
-                    width = "101"
-                    height = "101"
-                    mask="url(#path-mask)"
-                    />
-                <text 
-                    x="50.5" 
-                    y="50.5"
-                    text-anchor="middle"
-                    dominant-baseline="middle"
-                    mask="url(#path-mask)"
-                    class="svg-text"
-                >
-                    Text
-                </text>
-            </svg>
+        <div class="gradient-bg">
+            <div class="gradient-container">
+                <div class="interactive"></div>
+                <div class="c1 circle"></div>
+                <div class="c2 circle"></div>
+                <div class="c3 circle"></div>
+                <div class="c4 circle"></div>
+                <div class="c5 circle"></div>
+            </div>
         </div>
 
+
+
+        <svg class="svg-filter" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+        </svg>        
         <script type="module" src="testApp.js"></script>
     </body>
 </html>

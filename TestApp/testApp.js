@@ -1,13 +1,28 @@
-window.addEventListener("load", () => {
-    const svgPath = document.querySelector(".svg-path");
+document.addEventListener("DOMContentLoaded", ()=>{
+    const interBubble = document.querySelector(".interactive");
+    let curX = 0;
+    let curY = 0;
+    let tgX = 0;
+    let tgY = 0;
 
-    const pathLength = svgPath.getTotalLength();
+    function move(){
+        curX += (tgX-curX)/20;
+        curY += (tgY-curY)/20;
 
-    svgPath.style.strokeDasharray = pathLength;
-    svgPath.style.strokeDashoffset = 0;
+        interBubble.style.transform = `
+            translate(${Math.round(curX)}px, ${Math.round(curY)}px)
+            translate(-50%, -50%)
+        `;
+        requestAnimationFrame(() =>{
+            move();
+        });
 
-    requestAnimationFrame(() => {
-        svgPath.style.strokeDashoffset = -pathLength;
-        svgPath.style.strokeWidth = 10;
-    });
+    }
+
+    window.addEventListener("mousemove", (e) => {
+        tgX = e.clientX;
+        tgY = e.clientY;
+    });     
+
+    move();
 });
