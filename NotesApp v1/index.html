@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="CSS/app.css">
+    </head>
+    <body>
+        <main id="app">
+
+            <section id="sidebar">
+                <header id="sidebar_header">
+                    <span id="app_title">Notes</span>
+                    <button id="sidebar-close-btn" class="ui-bg-icon"></button>
+                </header>
+
+                <div id="sidebar-nav">
+                    <button class="ui-btn" id="dashboard-btn">
+                        <svg class="ui-icon" aria-hidden="true">
+                            <use href="#icon_dashboard"></use>
+                        </svg>
+                        <span>Dashboard</span>
+                    </button>
+
+                    <div class="dropdown">
+                        <header class="dropdown-header">
+                            <button class="dropdown-toggle" id="my_notebooks">
+                                <svg class="ui-icon" aria-hidden="true">
+                                    <use href="#icon_notebooks"></use>
+                                </svg>
+                                <span>My Notebooks</span>
+                            </button>
+                            <button class="dropdown-add-btn" id="notebook-add-btn">
+                                <svg class="ui-icon dropdown-add-icon" aria-hidden="true">
+                                    <use href="#icon_add"></use>
+                                </svg>
+                            </button>
+                            <span class="dropdown-chevron dropdown-toggle">
+                                <svg class="ui-icon dropdown-chevron-icon">
+                                    <use href="#icon_chevron"></use>
+                                </svg>
+                            </span>
+                        </header>
+                        <div class="dropdown-list">
+                            <div class="dropdown-list-inner">  
+                                <button class="dropdown-item">
+                                    <svg class="ui-list-icon">
+                                        <use href="#icon_book"></use>
+                                    </svg>
+                                    <span>Book Example</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <header class="dropdown-header">
+                            <button class="dropdown-toggle" id="my_notebooks">
+                                <svg class="ui-icon" aria-hidden="true">
+                                    <use href="#icon_tags"></use>
+                                </svg>
+                                <span>My Tags</span>
+                            </button>
+                            <button class="dropdown-add-btn" id="notebook-add-btn">
+                                <svg class="ui-icon dropdown-add-icon" aria-hidden="true">
+                                    <use href="#icon_add"></use>
+                                </svg>
+                            </button>
+                            <span class="dropdown-chevron dropdown-toggle">
+                                <svg class="ui-icon dropdown-chevron-icon">
+                                    <use href="#icon_chevron"></use>
+                                </svg>
+                            </span>
+                        </header>
+                        <div class="dropdown-list">
+                            <div class="dropdown-list-inner">
+                                <button class="dropdown-item">
+                                    <svg class="ui-list-icon">
+                                        <use href="#icon_tag"></use>
+                                    </svg>
+                                    <span>Tag Example</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="main">
+                <div id="main-content">
+                    <header id="main-header">All your notes</header>
+                    <div id="filter-search">
+
+                        <div class="select">
+                            <header class="select-header">
+                                <button class="select-toggle">
+                                    <span class="select-label">Recents</span>
+                                    <span class="select-chevron">
+                                        <svg class="ui-icon select-chevron-icon" aria-hidden="true">
+                                            <use href="#icon_chevron"></use>
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="select-list">
+                                    <div class="select-list-inner">
+                                        <button class="select-item">Recents</button>
+                                        <button class="select-item">Newest first</button>
+                                        <button class="select-item">Oldest first</button>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+
+                        <div id="search-bar">
+                            <svg class="ui-icon-search">
+                                <use href="#icon_search"></use>
+                            </svg>
+                            <input id="search-input" type="text" placeholder="Search notes">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+<!-- #region SVG SPRITES -->
+        <svg class="svg-sprite" aria-hidden="true">
+            <symbol id="icon_dashboard" viewBox="0 0 28 28">
+                <path d= 
+                    "M6.55141 23.3333C6.01435 23.3333 5.56596 23.1535 5.20624 22.7937C4.84652 22.434 4.66666 21.9856 4.66666 21.4486V6.55141C4.66666 6.01435 4.84652 5.56596 5.20624 5.20624C5.56596 4.84652 6.01435 4.66666 6.55141 4.66666H21.4486C21.9856 4.66666 22.434 4.84652 22.7937 5.20624C23.1535 5.56596 23.3333 6.01435 23.3333 6.55141V21.4486C23.3333 21.9856 23.1535 22.434 22.7937 22.7937C22.434 23.1535 21.9856 23.3333 21.4486 23.3333H6.55141ZM6.55141 22.1667H15.75V5.83332H6.55141C6.37174 5.83332 6.20714 5.90809 6.05761 6.05761C5.90809 6.20714 5.83332 6.37174 5.83332 6.55141V21.4486C5.83332 21.6282 5.90809 21.7928 6.05761 21.9424C6.20714 22.0919 6.37174 22.1667 6.55141 22.1667ZM16.9167 22.1667H21.4486C21.6282 22.1667 21.7928 22.0919 21.9424 21.9424C22.0919 21.7928 22.1667 21.6282 22.1667 21.4486V14.5833H16.9167V22.1667ZM16.9167 13.4167H22.1667V6.55141C22.1667 6.37174 22.0919 6.20714 21.9424 6.05761C21.7928 5.90809 21.6282 5.83332 21.4486 5.83332H16.9167V13.4167Z"
+                fill="currentColor"/>
+            </symbol>
+            <symbol id="icon_notebooks" viewBox="0 0 28 28">
+                <path d=
+                    "M4.08334 26.306V1.70508H5.83334V4.0947H22.1667V1.70508H23.9167V26.306H22.1667V23.9167H5.83334V26.306H4.08334ZM5.83334 12.8333H8.52572V8.30141H14.8076V12.8333H22.1667V5.84441H5.83334V12.8333ZM5.83334 22.1667H13.1924V17.6347H19.4743V22.1667H22.1667V14.5833H5.83334V22.1667ZM10.2757 12.8333H13.0576V10.0511H10.2757V12.8333ZM14.9424 22.1667H17.7243V19.3845H14.9424V22.1667Z"
+                fill="currentColor"/>                
+            </symbol>
+            <symbol id="icon_add" viewBox="0 0 24 24">
+                <path d=
+                    "M11.25 12.75H5.5V11.25H11.25V5.5H12.75V11.25H18.5V12.75H12.75V18.5H11.25V12.75Z"
+                fill="currentColor"/>
+            </symbol>
+            <symbol id="icon_chevron" viewBox="0 0 16 16">
+                <path d=
+                    "M1.56415 10.6667L7.99999 4.23083L14.4358 10.6667L13.4897 11.6128L7.99999 6.123L2.51032 11.6128L1.56415 10.6667Z"
+                fill="currentColor"/>
+            </symbol>
+            <symbol id="icon_book" viewBox="0 0 24 24">
+                <path d=
+                    "M6.8655 21.5C6.218 21.5 5.66192 21.2827 5.19725 20.848C4.73242 20.4135 4.5 19.8757 4.5 19.2345V5.58274C4.5 5.00707 4.68625 4.49649 5.05875 4.05099C5.43108 3.60549 5.90508 3.32249 6.48075 3.20199L15.8077 1.29999V16.6077L6.6405 18.5172C6.46483 18.5571 6.31417 18.6427 6.1885 18.774C6.06283 18.9055 6 19.059 6 19.2345C6 19.4563 6.08625 19.6394 6.25875 19.7837C6.43108 19.9279 6.63333 20 6.8655 20H18V4.49999H19.5V21.5H6.8655ZM8.69225 16.579L14.3077 15.4115V3.14424L8.69225 4.29224V16.579ZM7.19225 16.8827V4.59624L6.7885 4.68074C6.56033 4.7269 6.37183 4.83174 6.223 4.99524C6.07433 5.15874 6 5.35457 6 5.58274V17.229C6.1025 17.1763 6.20767 17.1311 6.3155 17.0932C6.42317 17.0554 6.5315 17.025 6.6405 17.002L7.19225 16.8827Z" 
+                fill="currentColor"/>
+            </symbol>
+            <symbol id="icon_tags" viewBox="0 0 28 28">
+                <path d=
+                    "M2.33334 23.9167V14.5834H11.6667V23.9167H2.33334ZM4.66668 21.5834H9.33334V16.9167H4.66668V21.5834ZM6.41668 11.6667L12.8333 1.16669L19.25 11.6667H6.41668ZM10.5583 9.33335H15.1083L12.8333 5.65835L10.5583 9.33335ZM25.1708 26.775L22.0792 23.6834C21.6708 23.9556 21.2285 24.1597 20.7521 24.2959C20.2757 24.432 19.775 24.5 19.25 24.5C17.7917 24.5 16.5521 23.9896 15.5313 22.9688C14.5104 21.9479 14 20.7084 14 19.25C14 17.7917 14.5104 16.5521 15.5313 15.5313C16.5521 14.5104 17.7917 14 19.25 14C20.7083 14 21.9479 14.5104 22.9688 15.5313C23.9896 16.5521 24.5 17.7917 24.5 19.25C24.5 19.7556 24.432 20.2465 24.2958 20.7229C24.1597 21.1993 23.9653 21.6417 23.7125 22.05L26.8042 25.1417L25.1708 26.775ZM21.3208 21.3209C21.8847 20.757 22.1667 20.0667 22.1667 19.25C22.1667 18.4334 21.8847 17.7431 21.3208 17.1792C20.757 16.6153 20.0667 16.3334 19.25 16.3334C18.4333 16.3334 17.7431 16.6153 17.1792 17.1792C16.6153 17.7431 16.3333 18.4334 16.3333 19.25C16.3333 20.0667 16.6153 20.757 17.1792 21.3209C17.7431 21.8847 18.4333 22.1667 19.25 22.1667C20.0667 22.1667 20.757 21.8847 21.3208 21.3209Z" 
+                fill="currentColor"/>
+            </symbol>
+            <symbol id="icon_tag" viewBox="0 0 24 24">
+                <path d="M11.0755 21.5C10.8495 21.5 10.623 21.4548 10.396 21.3645C10.1688 21.274 9.96442 21.1384 9.78275 20.9578L3.027 14.202C2.84367 14.0193 2.71 13.8176 2.626 13.5968C2.542 13.3761 2.5 13.1516 2.5 12.9233C2.5 12.6949 2.542 12.4672 2.626 12.24C2.71 12.013 2.84367 11.8087 3.027 11.627L11.5963 3.04225C11.7623 2.87658 11.9584 2.74483 12.1848 2.647C12.4111 2.549 12.645 2.5 12.8865 2.5H19.6672C20.1724 2.5 20.6016 2.67792 20.9548 3.03375C21.3079 3.38975 21.4845 3.81758 21.4845 4.31725V11.098C21.4845 11.342 21.4393 11.5745 21.349 11.7955C21.2587 12.0165 21.1283 12.209 20.9578 12.373L12.3635 20.9578C12.1827 21.1384 11.9793 21.274 11.7533 21.3645C11.5274 21.4548 11.3015 21.5 11.0755 21.5ZM10.852 19.9038C10.916 19.9679 10.9913 20 11.078 20C11.1645 20 11.2398 19.9679 11.3038 19.9038L19.898 11.3038C19.9302 11.2718 19.9527 11.2365 19.9655 11.198C19.9782 11.1597 19.9845 11.1213 19.9845 11.0828V4.31725C19.9845 4.22758 19.9541 4.15392 19.8932 4.09625C19.8324 4.03842 19.7571 4.0095 19.6672 4.0095H12.777L4.09625 12.6962C4.03208 12.7602 4 12.8355 4 12.922C4 13.0087 4.03208 13.084 4.09625 13.148L10.852 19.9038ZM17.4557 7.77875C17.8056 7.77875 18.103 7.65725 18.348 7.41425C18.5928 7.17125 18.7153 6.87608 18.7153 6.52875C18.7153 6.17892 18.5932 5.88158 18.3492 5.63675C18.1051 5.39175 17.8086 5.26925 17.4598 5.26925C17.1109 5.26925 16.8147 5.39133 16.5712 5.6355C16.3276 5.87967 16.2057 6.17617 16.2057 6.525C16.2057 6.87367 16.3273 7.16983 16.5703 7.4135C16.8134 7.657 17.1086 7.77875 17.4557 7.77875Z" 
+                fill="currentColor"/>
+            </symbol>
+            <symbol id="icon_search" viewBox="0 0 24 24">
+                <path d="M19.6 21L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16C7.68333 16 6.14583 15.3708 4.8875 14.1125C3.62917 12.8542 3 11.3167 3 9.5C3 7.68333 3.62917 6.14583 4.8875 4.8875C6.14583 3.62917 7.68333 3 9.5 3C11.3167 3 12.8542 3.62917 14.1125 4.8875C15.3708 6.14583 16 7.68333 16 9.5C16 10.2333 15.8833 10.925 15.65 11.575C15.4167 12.225 15.1 12.8 14.7 13.3L21 19.6L19.6 21ZM9.5 14C10.75 14 11.8125 13.5625 12.6875 12.6875C13.5625 11.8125 14 10.75 14 9.5C14 8.25 13.5625 7.1875 12.6875 6.3125C11.8125 5.4375 10.75 5 9.5 5C8.25 5 7.1875 5.4375 6.3125 6.3125C5.4375 7.1875 5 8.25 5 9.5C5 10.75 5.4375 11.8125 6.3125 12.6875C7.1875 13.5625 8.25 14 9.5 14Z" 
+                fill="currentColor"/>
+            </symbol>
+        </svg>
+<!-- #endregion -->
+        <script type="module" src="JS/app.js"></script>
+    </body>
+</html>
