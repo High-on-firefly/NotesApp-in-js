@@ -95,6 +95,27 @@
                     </svg>
                 </button>
                 <div id="main-content">
+                    <div id="note-panel">
+                        <header id="note-panel-header">
+                            <div id="note-panel-header-inner">
+                                <input type="text" id="note-panel-title-input" placeholder="Note Tile here">
+                                <button id="note-panel-close-btn">
+                                    <svg class="ui-icon">
+                                        <use href="#icon_cancel"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="note-panel-details">
+                                <p id="note-panel-date"></p>
+                            </div>
+                            <div class="switch" id="note-mode-switch">
+                                <button class="switch-btn" id="edit-switch-btn">Edit</button>
+                                <button class="switch-btn" id="preview-switch-btn">Preview</button>
+                            </div>
+                        </header>
+                        <div id="note-edit-content">Content container</div>
+                        <div id="note-read-content">Content container</div>
+                    </div>
                     <header id="main-header">All your notes</header>
                     <div id="filter-search">
                         <div class="select">
@@ -116,7 +137,6 @@
                                 </div>
                             </header>
                         </div>
-
                         <div id="search-bar-container">
                             <div id="search-bar">
                                 <svg class="ui-icon-small">
@@ -124,7 +144,7 @@
                                 </svg>
                                 <input id="search-input" type="text" placeholder="Search notes">
                             </div>
-                            <button id="new-notes-btn">
+                            <button id="new-note-btn">
                                 <svg class="ui-icon-small">
                                     <use href="#icon_new_note"></use>
                                 </svg>
@@ -132,8 +152,9 @@
                             </button>
                         </div>
                     </div>
+
                     <div id="notes-list">
-                        <div class="note-item">
+                        <!-- <div class="note-item">
                             <span class="note-icon">
                                 <svg class="ui-icon-small">
                                     <use href="#icon_note"></use>
@@ -145,14 +166,15 @@
                             </div>
                             <button class="note-delete-btn">
                                 <svg class="ui-icon-big">
-                                    <use href="#icon_note_delete"></use>
+                                    <use href="#icon_cancel"></use>
                                 </svg>
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>
             </section>
         </main>
+
 <!-- #region SVG SPRITES -->
         <svg class="svg-sprite" aria-hidden="true">
             <symbol id="icon_dashboard" viewBox="0 0 28 28">
@@ -205,7 +227,7 @@
                     "M3 21V19H15V21H3ZM3 17V15H21V17H3ZM5 13C4.45 13 3.97917 12.8042 3.5875 12.4125C3.19583 12.0208 3 11.55 3 11V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V11C21 11.55 20.8042 12.0208 20.4125 12.4125C20.0208 12.8042 19.55 13 19 13H5ZM5 11H19V5H5V11Z" 
                 fill="currentColor"/>
             </symbol>
-            <symbol id="icon_note_delete" viewBox="0 0 40 40">
+            <symbol id="icon_cancel" viewBox="0 0 40 40">
                 <path d=
                     "M10.6666 31.0896L8.91034 29.3333L18.2437 20L8.91034 10.6667L10.6666 8.91043L19.9999 18.2438L29.3333 8.91043L31.0895 10.6667L21.7562 20L31.0895 29.3333L29.3333 31.0896L19.9999 21.7563L10.6666 31.0896Z" 
                 fill="currentColor"/>
@@ -219,4 +241,4 @@
 <!-- #endregion -->
         <script type="module" src="JS/app.js"></script>
     </body>
-</html>
+</html> 
