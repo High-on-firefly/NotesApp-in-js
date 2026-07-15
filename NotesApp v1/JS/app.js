@@ -136,7 +136,7 @@ import { demoNotes } from "./demoNotes.js";
         let noteObj = findNoteObj(noteItem);
         notePanel.titleInput.value = noteObj.title;
         notePanel.date.textContent = noteObj.createdAt;
-        notePanel.noteEditContent.textContent = noteObj.source;
+        notePanel.noteEditContent.value = noteObj.source;
         notePanel.noteReadContent.innerHTML = noteObj.compiledHTML;
         
         notePanel.element.classList.add('is-start');

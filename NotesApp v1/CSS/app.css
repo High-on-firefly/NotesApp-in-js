@@ -124,12 +124,14 @@
         text-align: left;
         cursor: pointer;
         color: inherit;
+        user-select: none;
         font-size: inherit;
         font-weight: inherit;
     }
     .ui-empty-input,
     #note-panel-title-input,
-    #search-input{
+    #search-input,
+    #note-edit-content{
         background-color: transparent;
         border: none;
         outline: none;
@@ -479,9 +481,10 @@
         left: 10px;
         width: calc(100% - 20px);
         height: calc(100% - 20px);
+        grid-template-rows: auto 1fr;
     }
     #note-panel.is-start{
-        display: block;
+        display: grid;
         opacity: 1;
 
         transform: 
@@ -489,7 +492,7 @@
             scale(var(--scale-x), var(--scale-y));
     }
     #note-panel.is-open{
-        display: block;
+        display: grid;
         pointer-events: auto;
 
         opacity: 1;
@@ -500,6 +503,15 @@
     }
     #note-edit-content{
         display: none;
+        text-wrap: wrap;
+        overflow-y: auto;
+        font-size: 16px;
+        width: 100%;
+    }
+    #note-read-content{
+        width: 100%;
+        overflow-y: auto;
+        text-wrap: wrap;
     }
     #note-panel.is-edit #note-edit-content{
         display: block;
@@ -543,7 +555,6 @@
     #note-panel-close-btn .ui-icon{
         margin: 0;
     }
-
 /* #endregion */
 /* #region NOTE LIST AND NOTES */
     #notes-list{
