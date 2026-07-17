@@ -12,16 +12,23 @@
 
 // #region functions
     function parseMarkdown(str){
+        // states and data
         const lines = str.split("\n");
         let html = "";
-        let listDepth = [];
-        let insideList = false;
-
+        let listStack = [];
+        // functions
+            function openList(listMode, listStart, text){
+                listStack.push(listMode);
+                html += `<${listMode} ${listStart}><li>${text}`;
+            }
+            function closeList(){
+                html += `</li></${listStack.at(-1)}>`;
+                listStack.pop();
+            }
+        
         lines.forEach((line)=>{
-
-            let lineDepth = getDepth(line);
+            const lineDepth = getDepth(line);
             line = parseInlineMarkdown(escapeHTML(line.trim()));
-            
             if(line.startsWith("### ")){
                 let text = line.slice(4);
                 html += `<h3>${text}</h3>`;
@@ -37,38 +44,65 @@
                 html += `<h1>${text}</h1>`;
                 return;
             }
-            if(line.startsWith("- ")){
-                let text = line.slice(2);
+            // nested list implemention 
+            const orderedMatch = line.match(/^(\d+?)\.\s/);
+            if(line.startsWith("- ")||orderedMatch){
+                const listMode = orderedMatch ? "ol" : "ul"
+                const listStart =
+                    orderedMatch && orderedMatch[1] !== "1"?
+                    `start="${orderedMatch[1]}"`:
+                    "";
+                const text = 
+                    orderedMatch?
+                    line.slice(orderedMatch[0].length):
+                    line.slice(2);
 
-                if(!insideList){
-                    insideList = true;
-                    listDepth.push(lineDepth);
-                    html += `<ul><li>${text}`;
+                // if list is not open
+                if(!listStack.length){
+                    openList(listMode, listStart, text);
                     return;
                 }
-                if(insideList){
-                    if(listDepth[listDepth.length -1] === lineDepth){
-                        html += `</li><li>${text}`;
-                        listDepth.push(lineDepth);
+                
+                // if list is open
+                // if list item is same depth as list
+                if(listStack.length === lineDepth){
+                    if(listStack.at(-1) !== listMode){
+                        closeList();
+                        openList(listMode, listStart, text);
                         return;
                     }
-                    if(listDepth[listDepth.length -1] < lineDepth){
-                        html += `<ul><li>${text}`;
-                        listDepth.push(lineDepth);
+                    html += `</li><li>${text}`;
+                    return;
+                }
+                // if list item is deeper 
+                if(listStack.length < lineDepth){
+                    openList(listMode, listStart, text);
+                    return;
+                }
+                // if list item is shallower
+                if(listStack.length > lineDepth){
+                    while(listStack.length > lineDepth){
+                        closeList();
+                    }
+                    if(listStack.at(-1) !== listMode){
+                        closeList();
+                        openList(listMode, listStart, text);
                         return;
                     }
-                return;
+                    html += `</li><li>${text}`;
+                    return
                 }
             }
-            if(insideList === true){
-                html += "</li></ul></li></ul>";
-                insideList = false;
-                return;
-            }
+
             html+= `<p>${line}</p>`;
         });
-        console.log(listDepth);       
-        console.log(html);       
+        // if list is open close it 
+        if(listStack.length){
+            while(listStack.length){
+                closeList();
+            }
+        }
+        console.log(html)
         return html;
     }
 
@@ -80,7 +114,7 @@
     }
     function getDepth(str){
         const spaces = str.match(/^ */)[0].length;
-        return Math.floor(spaces/4);
+        return Math.floor(spaces/4)+1;
     }
     function escapeHTML(str){
         return str
