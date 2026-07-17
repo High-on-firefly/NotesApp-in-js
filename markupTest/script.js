@@ -16,19 +16,37 @@
         const lines = str.split("\n");
         let html = "";
         let listStack = [];
+        let insideCode = false;
         // functions
-            function openList(listMode, listStart, text){
-                listStack.push(listMode);
-                html += `<${listMode} ${listStart}><li>${text}`;
-            }
-            function closeList(){
-                html += `</li></${listStack.at(-1)}>`;
-                listStack.pop();
-            }
+        function openList(listType, listAtrib, content){
+            listStack.push(listType);
+            html += `<${listType} ${listAtrib}><li>${content}`;
+        }
+        function closeList(){
+            html += `</li></${listStack.at(-1)}>`;
+            listStack.pop();
+        }
         
         lines.forEach((line)=>{
             const lineDepth = getDepth(line);
-            line = parseInlineMarkdown(escapeHTML(line.trim()));
+            line = escapeHTML(line.trim());
+            //pre inline parsing 
+            if(insideCode){
+                if(!line.startsWith("```")){
+                    html += line+"\n";
+                    return;
+                }
+                insideCode = false;
+                html+= "</code></pre>";
+                return;
+            }
+            if(line.startsWith("```")){
+                insideCode = true;
+                html+= "<pre><code>";
+                return;
+            }
+            //post inline parsing
+            line = parseInlineMarkdown(line);
             if(line.startsWith("### ")){
                 let text = line.slice(4);
                 html += `<h3>${text}</h3>`;
@@ -47,7 +65,7 @@
             // nested list implemention 
             const orderedMatch = line.match(/^(\d+?)\.\s/);
             if(line.startsWith("- ")||orderedMatch){
-                const listMode = orderedMatch ? "ol" : "ul"
+                const listType = orderedMatch ? "ol" : "ul"
                 const listStart =
                     orderedMatch && orderedMatch[1] !== "1"?
                     `start="${orderedMatch[1]}"`:
@@ -59,16 +77,16 @@
 
                 // if list is not open
                 if(!listStack.length){
-                    openList(listMode, listStart, text);
+                    openList(listType, listStart, text);
                     return;
                 }
                 
                 // if list is open
                 // if list item is same depth as list
                 if(listStack.length === lineDepth){
-                    if(listStack.at(-1) !== listMode){
+                    if(listStack.at(-1) !== listType){
                         closeList();
-                        openList(listMode, listStart, text);
+                        openList(listType, listStart, text);
                         return;
                     }
                     html += `</li><li>${text}`;
@@ -76,7 +94,7 @@
                 }
                 // if list item is deeper 
                 if(listStack.length < lineDepth){
-                    openList(listMode, listStart, text);
+                    openList(listType, listStart, text);
                     return;
                 }
                 // if list item is shallower
@@ -84,9 +102,9 @@
                     while(listStack.length > lineDepth){
                         closeList();
                     }
-                    if(listStack.at(-1) !== listMode){
+                    if(listStack.at(-1) !== listType){
                         closeList();
-                        openList(listMode, listStart, text);
+                        openList(listType, listStart, text);
                         return;
                     }
                     html += `</li><li>${text}`;
